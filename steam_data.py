@@ -1,7 +1,11 @@
+# encoding=utf8
+import sys
 import urllib, json
-import urllib.request as ur
+# import urllib.request as ur
 import numpy as np
 import matplotlib.pyplot as plt
+reload(sys)
+sys.setdefaultencoding('utf8')
 
 keys = {
     'ZonaVRQRO01' : 76561198980269971,
@@ -16,14 +20,14 @@ i = 0;
 user_jsons = []
 game_values = []
 game_names = []
-api_key = "69D6E24D23A131DE7F1E38DFC9B7A165"
+api_key = "0ED38B6C1B1501586ECD21A8A09A1A47"
 total = []
 # user_jsons = [np.load("ex.json")]
 
 for key in keys.values():
     print(key)
     url = "http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key="+ api_key + "&steamid=" + str(key) +"&include_appinfo=1&include_played_free_games=1&format=json"
-    response = ur.urlopen(url)
+    response = urllib.urlopen(url)
     data = json.loads(response.read())
     user_jsons.append(data)
 
